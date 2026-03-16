@@ -149,12 +149,10 @@ Return ONLY valid JSON array, no markdown, no backticks:
 });
 const aiText = aiResponse.data.choices[0].message.content.replace(/```json|```/g, '').trim();
 
-    let aiReasons = [];
-    try {
-      aiReasons = JSON.parse(aiText);
-    } catch (e) {
-      aiReasons = final.map(g => ({ name: g.name, reason: 'A great pick for your preferences.' }));
-    }
+    const aiReasons = final.map(g => ({
+  name: g.name,
+  reason: `A highly rated ${genre} game with a ${g.rating}/5 rating. Released in ${g.released?.split('-')[0] || 'N/A'}. Check it out on Steam or Epic Games!`
+}));
 
     const finalGames = final.map(game => ({
     name: game.name,
