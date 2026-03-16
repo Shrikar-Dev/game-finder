@@ -134,7 +134,7 @@ Return ONLY valid JSON array, no markdown, no backticks:
 [{"name":"Game Name","reason":"explanation"}]`;
 
     const aiResponse = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
-  model: 'nvidia/nemotron-nano-12b-v2-vl:free',
+  model: 'mistralai/mistral-7b-instruct:free',
   messages: [{ role: 'user', content: prompt }]
 }, {
   headers: {
