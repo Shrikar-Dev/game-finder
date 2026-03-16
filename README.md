@@ -1,5 +1,5 @@
 🎮 Game Finder
-An AI-powered game recommendation app that suggests the perfect video games based on your preferences. Built with Node.js, Express, RAWG API, and OpenRouter AI.
+An AI-powered game recommendation app that suggests the perfect video games based on your preferences. Built with Node.js, Express, RAWG API.
 
 🔥 Features
 Smart Recommendations — AI analyzes your preferences and explains why each game suits you
@@ -12,14 +12,12 @@ Pagination — Fetches up to 100 games per search for accurate results
 Frontend — HTML, CSS, JavaScript
 Backend — Node.js, Express.js
 Game Data — RAWG API (900,000+ games)
-AI — OpenRouter API (AI-powered game descriptions)
 Deployment — Vercel
 📦 Installation
 Prerequisites
 Node.js (v18 or higher)
 NPM
 RAWG API Key (free at rawg.io/apidocs)
-OpenRouter API Key (free at openrouter.ai)
 Steps
 Clone the repository
 git clone https://github.com/Shrikar-Dev/game-finder.git
@@ -28,7 +26,6 @@ Install dependencies
 npm install
 Create a .env file in the root directory
 RAWG_API_KEY=your_rawg_api_key_here
-OPENROUTER_API_KEY=your_openrouter_api_key_here
 PORT=3000
 Start the development server
 node server.js
@@ -56,7 +53,6 @@ Deploy!
 🔑 Environment Variables
 Variable	Description
 RAWG_API_KEY	Your RAWG API key from rawg.io/apidocs
-OPENROUTER_API_KEY	Your OpenRouter API key from openrouter.ai
 PORT	Port to run the server on (default: 3000)
 📁 Project Structure
 game-finder/
@@ -69,7 +65,6 @@ game-finder/
 └── README.md           # This file
 🙏 Credits
 RAWG API — Game database
-OpenRouter — AI API gateway
 Vercel — Hosting and deployment
 📄 License
 MIT License — feel free to use this project however you like.
