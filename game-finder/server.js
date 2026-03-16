@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 
@@ -170,4 +170,8 @@ const aiText = aiResponse.data.choices[0].message.content.replace(/```json|```/g
 });
 
 const PORT = process.env.PORT || 3000;
+app.use((err, req, res, next) => {
+  console.error('Unhandled error:', err.message);
+  res.status(500).json({ error: err.message });
+});
 app.listen(PORT, () => console.log(`Game Finder running at http://localhost:${PORT}`));
