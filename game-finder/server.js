@@ -45,7 +45,8 @@ app.post('/api/recommend', async (req, res) => {
 
   try {
     console.log(`\n=== Search: ${genre} | ${playStyle} | ${budget} | ${specs} ===`);
-
+    console.log('OPENROUTER KEY EXISTS:', !!process.env.OPENROUTER_API_KEY);
+    console.log('RAWG KEY EXISTS:', !!process.env.RAWG_API_KEY);
     const baseParams = {
       key: process.env.RAWG_API_KEY,
       ordering: '-rating',
