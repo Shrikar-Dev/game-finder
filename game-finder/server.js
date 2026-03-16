@@ -14,13 +14,18 @@ async function fetchPages(params, maxPages) {
   const all = [];
   let nextUrl = null;
   for (let p = 1; p <= maxPages; p++) {
-    const res = nextUrl
-      ? await axios.get(nextUrl)
-      : await axios.get('https://api.rawg.io/api/games', { params });
-    all.push(...res.data.results);
-    console.log(`Page ${p}: ${res.data.results.length} games (total: ${all.length})`);
-    if (!res.data.next) break;
-    nextUrl = res.data.next;
+    try {
+      const res = nextUrl
+        ? await axios.get(nextUrl, { timeout: 8000 })
+        : await axios.get('https://api.rawg.io/api/games', { params, timeout: 8000 });
+      all.push(...res.data.results);
+      console.log(`Page ${p}: ${res.data.results.length} games (total: ${all.length})`);
+      if (!res.data.next) break;
+      nextUrl = res.data.next;
+    } catch (e) {
+      console.log(`Page ${p} failed:`, e.message);
+      break;
+    }
   }
   return all;
 }
@@ -64,7 +69,7 @@ app.post('/api/recommend', async (req, res) => {
     }
 
     // Fetch 5 pages = 100 games
-    let games = await fetchPages(baseParams, 5);
+    let games = await fetchPages(baseParams, 3);
     console.log('PAGINATION RESULT:', games.length);
     console.log(`Total fetched: ${games.length}`);
 
