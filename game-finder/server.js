@@ -179,4 +179,4 @@ app.use((err, req, res, next) => {
   console.error('Unhandled error:', err.message);
   res.status(500).json({ error: err.message });
 });
-app.listen(PORT, () => console.log(`Game Finder running at http://localhost:${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Game Finder running at http://localhost:${PORT}`));
