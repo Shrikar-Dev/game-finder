@@ -125,29 +125,10 @@ app.post('/api/recommend', async (req, res) => {
 
     if (final.length === 0) return res.json({ games: [] });
 
-    // Only send top 10 to AI for descriptions, rest get generic description
-    const aiGames = final.slice(0, 10);
-    const gameList = aiGames.map(g =>
-    `${g.name} (Rating: ${g.rating}/5, Released: ${g.released})`
-    ).join('\n');
-
     
-    const prompt = `You are a game recommendation expert. User wants ${playStyle} ${genre} games. Budget: ${budget}. PC: ${specs}.
-Games: ${gameList}
-Write 1-2 enthusiastic sentences per game explaining why it suits this user. Mention free to play if relevant.
-Return ONLY valid JSON array, no markdown, no backticks:
-[{"name":"Game Name","reason":"explanation"}]`;
+    
 
-    const aiResponse = await axios.post('https://openrouter.ai/api/v1/chat/completions', {
-  model: 'openai/gpt-oss-120b:free',
-  messages: [{ role: 'user', content: prompt }]
-}, {
-  headers: {
-    'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-    'Content-Type': 'application/json'
-  }
-});
-const aiText = aiResponse.data.choices[0].message.content.replace(/```json|```/g, '').trim();
+
 
     const aiReasons = final.map(g => ({
   name: g.name,
