@@ -132,7 +132,7 @@ app.post('/api/recommend', async (req, res) => {
 
     const aiReasons = final.map(g => ({
   name: g.name,
-  reason: `A highly rated ${genre} game with a ${g.rating}/5 rating. Released in ${g.released?.split('-')[0] || 'N/A'}. Check it out on Steam or Epic Games!`
+  reason: `Rated ${g.rating}/5 by the community. A ${genre} ${playStyle === 'multiplayer' ? 'multiplayer' : playStyle === 'singleplayer' ? 'singleplayer' : ''} experience released in ${g.released?.split('-')[0] || 'N/A'}. ${budget === 'free' ? 'Free to play!' : 'Available on Steam & Epic Games.'}`
 }));
 
     const finalGames = final.map(game => ({
