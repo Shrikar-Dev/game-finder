@@ -12,7 +12,7 @@ Pagination — Fetches up to 100 games per search for accurate results
 Frontend — HTML, CSS, JavaScript
 Backend — Node.js, Express.js
 Game Data — RAWG API (900,000+ games)
-Deployment — Vercel
+Deployment — Render
 📦 Installation
 Prerequisites
 Node.js (v18 or higher)
@@ -34,7 +34,6 @@ http://localhost:3000
 🎯 How It Works
 User answers 4 questions about their gaming preferences
 App fetches up to 100 matching games from RAWG's database across multiple pages
-OpenRouter AI analyzes the results and writes personalized descriptions
 Results are displayed as game cards with cover art, ratings, and store links
 🔍 Filters
 Filter	Options
@@ -43,12 +42,12 @@ Playstyle	Singleplayer, Multiplayer, Both
 Budget	Free Only, Happy to Pay, Any
 PC Specs	Low-end, Mid-range, High-end
 🚀 Deployment
-This app is deployed on Vercel. To deploy your own version:
+This app is deployed on Render. To deploy your own version:
 
 Push your code to GitHub
-Connect your GitHub repo to Vercel
+Connect your GitHub repo to Render
 Set the Root Directory to game-finder
-Add your environment variables in Vercel Settings → Environment Variables
+Add your environment variables in Render Settings → Environment Variables
 Deploy!
 🔑 Environment Variables
 Variable	Description
@@ -60,11 +59,10 @@ game-finder/
 │   └── index.html      # Frontend UI
 ├── server.js           # Express backend + API logic
 ├── .env                # Environment variables (not committed)
-├── vercel.json         # Vercel deployment config
 ├── package.json        # Dependencies
 └── README.md           # This file
 🙏 Credits
 RAWG API — Game database
-Vercel — Hosting and deployment
+Render — Hosting and deployment
 📄 License
 MIT License — feel free to use this project however you like.
